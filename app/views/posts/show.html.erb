@@ -1,0 +1,28 @@
+<div class="container-fluid">
+<h3>Hi <%= @user.alias %>!</h3>
+<br>
+<form action="/posts/<%= @user.id %>/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <textarea rows="1" cols="65" name="post[content]" id="content"></textarea>
+    <input type="hidden" name="post[user_id]" value="<% @user.id %>">
+    <input type="submit" value="Idea!" name="Idea">
+</form>
+<% @posts.each do |post| %>
+    <p><a href="/users/<%= post.user.id %>"><%= post.user.alias %></a> says: <textarea disabled rows="1" cols="50"><%= post.content %></textarea></p>
+    <p><form action="/<%= @user.id %>/posts/<%= post.id %>/likes" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="post_id" value="<%= post.id %>">
+            <input type="hidden" name="user_id" value="<%= @user.id %>">
+            <input type="submit" value="Like" name="Like">
+        </form>
+        <% if current_user == post.user %>
+                <form action="/posts/<%= post.id %>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="submit" value="Delete" name="Delete">
+                </form></p>
+        <% end %>
+        <p><a href="/posts/<%= post.id %>"><%= post.likes.count %> people</a> like this.</p>
+<% end %>
+
+</div>

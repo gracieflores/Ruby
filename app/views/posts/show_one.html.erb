@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<a href="/posts">Bright Ideas</a>
+
+    <p><a href="/users/<%= @post.user.id %>"><%= @post.user.alias %></a> says: <textarea disabled row="2" cols="50"><%= @post.content %></textarea></p>
+    
+
+    <p> People who liked this post: </p>
+    <table class="table table-sm table-bordered">
+        <tr>
+            <th>Alias</th>
+            <th>Name</th>
+        </tr>
+        <% @likes.each do |like| %>
+        <tr>
+            <td><a href="/users/<%= like.id %>"><%= like.alias %></a></td>
+            <td><%= like.name %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+<h1>Welcome</h1>
+    
+    <div class="left">
+        <h3>Register</h3>
+        <form action="/users/new" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p>Name: <input type="text" name="user[name]" id="name"></p>
+            <p>Alias: <input type="text" name="user[alias]" id="alias"></p>
+            <p>Email: <input type="email" name="user[email]" id="email"></p>
+            <p>Password: <input type="password" name="user[password]" id="password"></p>
+            <p>*Password should be at least 8 characters</p>
+            <p>Confirm PW: <input type="password" name="user[password_confirmation]" id="password_confirmation"></p>
+            <input type="submit" value="Register" name="Register">
+        </form>
+    </div>
+    <div class="right">
+        <h3>Login</h3>
+        <form action="/sessions/new" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p>Email: <input type="email" name="user[email]" id="email"></p>
+            <p>Password: <input type="password" name="user[password]" id="password"></p>
+            <input type="submit" value="Login" name="Login">
+        </form>
+    </div>
+</div>

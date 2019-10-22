@@ -1,0 +1,13 @@
+<div class="container-fluid">
+
+<a href="/posts">Bright Ideas</a>
+
+<h4>Name: <%= @user.name %></h4>
+<h4>Alias: <%= @user.alias %></h4>
+<h4>Email: <%= @user.email %></h4>
+<br>
+<div class="line"></div>
+<br>
+<p>Total Number of Posts: <%= @user.posts.count %></p>
+<p>Total Number of Likes: <%= @user.likes.count %></p>
+</div>
